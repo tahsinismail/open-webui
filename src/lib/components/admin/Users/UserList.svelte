@@ -510,7 +510,7 @@
 >
 > It looks like you have over 50 users — that usually falls under organizational usage.
 > 
-> Open WebUI is proudly open source and completely free, with no hidden limits — and we'd love to keep it that way. 🌱  
+> Bayyena is proudly open source and completely free, with no hidden limits — and we'd love to keep it that way. 🌱  
 >
 > By supporting the project through sponsorship or an enterprise license, you’re not only helping us stay independent, you’re also helping us ship new features faster, improve stability, and grow the project for the long haul. With an *enterprise license*, you also get additional perks like dedicated support, customization options, and more — all at a fraction of what it would cost to build and maintain internally.  
 > 
