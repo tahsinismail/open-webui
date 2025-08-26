@@ -8,6 +8,19 @@ services:
   #   restart: unless-stopped
   #   image: ollama/ollama:${OLLAMA_DOCKER_TAG-latest}
 
+  postgres:
+    image: postgres:15-alpine
+    container_name: open-webui-postgres
+    environment:
+      - POSTGRES_DB=openwebui
+      - POSTGRES_USER=openwebui
+      - POSTGRES_PASSWORD=your_password_here
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    restart: unless-stopped
+
   open-webui:
     build:
       context: .
@@ -21,9 +34,23 @@ services:
       - 3004:8080
     environment:
       - 'WEBUI_SECRET_KEY='
+      - 'CONTENT_EXTRACTION_ENGINE=tika'
+      - 'TIKA_SERVER_URL=http://tika:9998'
+      - 'DATABASE_URL=postgresql://openwebui:your_password_here@postgres:5432/openwebui'
     extra_hosts:
       - host.docker.internal:host-gateway
+    depends_on:
+      - postgres
+      - tika
+    restart: unless-stopped
+
+  tika:
+    image: apache/tika:latest
+    container_name: tika
+    ports:
+      - 9998:9998
     restart: unless-stopped
 
 volumes:
   open-webui: {}
+  postgres_data: {}

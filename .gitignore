@@ -19,6 +19,9 @@ CLAUDE.md
 # C extensions
 *.so
 
+# Docker
+docker-compose.yaml
+
 # Pyodide distribution
 static/pyodide/*
 !static/pyodide/pyodide-lock.json
@@ -310,3 +313,4 @@ dist
 cypress/videos
 cypress/screenshots
 .vscode/settings.json
+docker-compose.yaml
