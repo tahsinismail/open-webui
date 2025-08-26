@@ -4,6 +4,10 @@ import { defineConfig } from 'vite';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default defineConfig({
+	server: {
+		host: true,
+		allowedHosts: ['bayyena.com', 'www.bayyena.com'], // Needed for Docker
+	},
 	plugins: [
 		sveltekit(),
 		viteStaticCopy({
